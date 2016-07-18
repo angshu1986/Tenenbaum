@@ -23,12 +23,27 @@
 			</plugin>
 		</plugins>
 	</build>
+	<repositories>
+    <repository>
+        <id>dsalgo-mvn-repo</id>
+        <url>https://raw.github.com/angshu1986/dsalgo/mvn-repo/</url>
+        <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+        </snapshots>
+    </repository>
+</repositories>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
+		</dependency>
+		<dependency>
+			<groupId>dsalgo</groupId>
+			<artifactId>dsalgo</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 </project>
