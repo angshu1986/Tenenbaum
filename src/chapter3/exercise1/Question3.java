@@ -3,8 +3,8 @@ package chapter3.exercise1;
 public class Question3 {
 
 	public static void main(String[] args) {
-		int arr[] = {3, 78, 12, 5, 8, 6, 1, 40};
-		System.out.println(new Question3().min(arr, 0));
+		int arr[] = {3, 78, 12, 5, 8, 6, 1, 40, 56};
+		System.out.println(new Question3().avg(arr, 0));
 	}
 	private int max(int []arr, int i) {
 		if (i == arr.length) {
@@ -29,6 +29,31 @@ public class Question3 {
 			} else {
 				return temp;
 			}
+		}
+	}
+	
+	private int sum(int []arr, int i) {
+		if (i == arr.length) {
+			return 0;
+		} else {
+			return arr[i] + sum(arr, i + 1);
+		}
+	}
+	
+	private int prod(int []arr, int i) {
+		if (i == arr.length) {
+			return 1;
+		} else {
+			return arr[i] * prod(arr, i + 1);
+		}
+	}
+	
+	//TODO: recheck later, no time now
+	private int avg(int []arr, int i) {
+		if (i == arr.length) {
+			return 0;
+		} else {
+			return (arr[i] + sum(arr, i + 1)) / i;
 		}
 	}
 }

@@ -26,7 +26,6 @@ public class Question6 {
 		q.eval(input);
 		s.close();
 	}
-	//TODO: check again, some calc mistake
 	private void eval(String input) {
 		if (input != null && !input.isEmpty()) {
 			char []arr = input.toCharArray();
@@ -88,11 +87,6 @@ public class Question6 {
 	
 	private boolean isOperator(char ch) {
 		return (ch == '+') || (ch == '-') || (ch == '*') || (ch == '/');
-	}
-	
-	private boolean hasSamePrecedence(char optrInStr, char optrTop) {
-		return ((optrInStr == '*' || optrInStr == '/') && (optrTop == '*' || optrTop == '/'))
-				|| ((optrInStr == '+' || optrInStr == '-') && (optrTop == '+' || optrTop == '-'));
 	}
 	
 	private boolean hasPrecedence(char optrInStr, char optrTop) {
