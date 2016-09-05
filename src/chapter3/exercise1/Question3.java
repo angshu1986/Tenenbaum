@@ -4,7 +4,7 @@ public class Question3 {
 
 	public static void main(String[] args) {
 		int arr[] = {3, 78, 12, 5, 8, 6, 1, 40, 56};
-		System.out.println(new Question3().avg(arr, 0));
+		System.out.println(new Question3().avg(arr, arr.length));
 	}
 	private int max(int []arr, int i) {
 		if (i == arr.length) {
@@ -48,12 +48,17 @@ public class Question3 {
 		}
 	}
 	
-	//TODO: recheck later, no time now
-	private int avg(int []arr, int i) {
-		if (i == arr.length) {
+	/**
+	 * Avg(N) = (Avg(N-1) * (N-1)+ Nth element) / N
+	 * @param arr
+	 * @param i
+	 * @return
+	 */
+	private double avg(int []arr, int i) {
+		if (i == 0) {
 			return 0;
 		} else {
-			return (arr[i] + sum(arr, i + 1)) / i;
+			return (avg(arr, i - 1) * (i - 1) + arr[i - 1]) / i;
 		}
 	}
 }
