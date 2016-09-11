@@ -14,4 +14,15 @@ public class Question4 {
 			return gfib(f0, f1, n - 1) + gfib(f0, f1, n - 2);
 		}
 	}
+private int gfibItr(int f0, int f1, int n) {
+int x = f0;
+int y = f1;
+int s = 0;
+for (int i = 2; i <= n; i++) {
+s = x + y;
+x = y;
+y= s;
+}
+return s;
+}
 }
