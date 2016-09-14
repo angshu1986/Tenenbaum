@@ -29,6 +29,20 @@ public class Question7 {
 		System.arraycopy(arr, k + 1, arr2, 0, arr2.length);
 		sort(arr1, 0, arr1.length - 1);
 		sort(arr2, 0, arr2.length - 1);
+		System.out.println("Printing array 1");
+		System.out.print("[	");
+		for (int i : arr1) {
+			System.out.print(i+"	");
+		}
+		System.out.print("]");
+		System.out.println();
+		System.out.println("Printing array 2");
+		System.out.print("[	");
+		for (int i : arr2) {
+			System.out.print(i+"	");
+		}
+		System.out.print("]");
+		System.out.println();
 		merge(arr1, arr2, arr);
 	}
 
