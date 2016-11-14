@@ -29,8 +29,82 @@ package chapter3.exercise3;
  */
 public class Question10 {
 
+	private static final int N = 8;
+
+	private static int sol = 0;
 	public static void main(String[] args) {
+		// System.out.println();
+		long stTime = System.currentTimeMillis();
+		new Question10().solve(new int[N][N], 0/*, new boolean[N]*/);
+		long endTime = System.currentTimeMillis();
+		System.out.printf("Running time %d ms", (endTime - stTime));
+	}
+
+	private void solve(int[][] b, int col/*, boolean []isVisited*/) {
+		if (col == N) {
+			sol++;
+			// print board and reset
+			System.out.printf("Solution number: %d\n", sol);
+			for (int i = 0; i < N; i++) {
+				for (int j = 0; j < N; j++) {
+					System.out.print(" " + b[i][j] + " ");
+				}
+				System.out.println();
+			}
+			b = new int[N][N];
+			return;
+		}
+		for (int i = 0; i < N; i++) {
+			if (isSafe(i, col, b) /*&& !isVisited[i]*/) {
+				b[i][col] = 1;
+				/*isVisited[i] = true;*/
+				solve(b, col + 1/*, isVisited*/);
+			}
+			/*isVisited[i] = false;*/
+			b[i][col] = 0;
+
+		}
 
 	}
 
+	private boolean isSafe(int row, int col, int[][] b) {
+		for (int i = 0; i < col; i++) {
+			if (b[row][i] == 1) {
+				return false;
+			}
+		}
+		// lower right diagonal
+		int i = row, j = col;
+		while (i < N && j >= 0) {
+			if (b[i][j] == 1) {
+				return false;
+			} else {
+				i++;
+				j--;
+			}
+		}
+		// upper left diagonal
+		i = row;
+		j = col;
+		if (row > col) {
+			while (i >= row - col && j >= 0) {
+				if (b[i][j] == 1) {
+					return false;
+				} else {
+					i--;
+					j--;
+				}
+			}
+		} else {
+			while (i >= 0 && j >= col - row) {
+				if (b[i][j] == 1) {
+					return false;
+				} else {
+					i--;
+					j--;
+				}
+			}
+		}
+		return true;
+	}
 }
