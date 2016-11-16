@@ -51,7 +51,7 @@ public class Question10 {
 				}
 				System.out.println();
 			}
-			b = new int[N][N];
+			/*b = new int[N][N];*/
 			return;
 		}
 		for (int i = 0; i < N; i++) {
