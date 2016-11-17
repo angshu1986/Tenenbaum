@@ -33,38 +33,31 @@ public class Question10 {
 
 	private static int sol = 0;
 	public static void main(String[] args) {
-		// System.out.println();
 		long stTime = System.currentTimeMillis();
-		new Question10().solve(new int[N][N], 0/*, new boolean[N]*/);
+		new Question10().solve(new int[N][N], 0);
 		long endTime = System.currentTimeMillis();
 		System.out.printf("Running time %d ms", (endTime - stTime));
 	}
 
-	private void solve(int[][] b, int col/*, boolean []isVisited*/) {
+	private void solve(int[][] b, int col) {
 		if (col == N) {
-			sol++;
 			// print board and reset
-			System.out.printf("Solution number: %d\n", sol);
+			System.out.printf("Solution number: %d\n", ++sol);
 			for (int i = 0; i < N; i++) {
 				for (int j = 0; j < N; j++) {
 					System.out.print(" " + b[i][j] + " ");
 				}
 				System.out.println();
 			}
-			/*b = new int[N][N];*/
 			return;
 		}
 		for (int i = 0; i < N; i++) {
-			if (isSafe(i, col, b) /*&& !isVisited[i]*/) {
+			if (isSafe(i, col, b)) {
 				b[i][col] = 1;
-				/*isVisited[i] = true;*/
-				solve(b, col + 1/*, isVisited*/);
+				solve(b, col + 1);
 			}
-			/*isVisited[i] = false;*/
 			b[i][col] = 0;
-
 		}
-
 	}
 
 	private boolean isSafe(int row, int col, int[][] b) {

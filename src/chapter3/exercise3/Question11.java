@@ -9,8 +9,8 @@ package chapter3.exercise3;
  */
 public class Question11 {
 
-	private static final int N = 5;
-	/*private static final int maze[][] = { 	{ 0, 0, 1, 0, 0, 0, 0, 0, 1, 0 }, 
+	private static final int N = 10;
+	private static final int maze[][] = { 	{ 0, 0, 1, 0, 0, 0, 0, 0, 1, 0 }, 
 											{ 0, 0, 1, 0, 1, 1, 0, 0, 0, 0 },
 											{ 1, 0, 0, 0, 1, 1, 0, 0, 1, 0 }, 
 											{ 0, 0, 1, 0, 1, 1, 0, 0, 1, 0 }, 
@@ -18,23 +18,25 @@ public class Question11 {
 											{ 0, 0, 1, 0, 1, 1, 0, 0, 1, 0 }, 
 											{ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 }, 
 											{ 0, 0, 1, 0, 1, 1, 0, 0, 1, 0 },
-											{ 0, 0, 1, 0, 1, 1, 0, 0, 1, 0 }, 
-											{ 0, 0, 1, 0, 1, 1, 0, 0, 1, 0 } };
+											{ 0, 0, 1, 0, 1, 1, 0, 1, 1, 0 }, 
+											{ 0, 0, 0, 0, 1, 1, 0, 0, 1, 0 } };
 
-*/	private static final int maze[][] = {	{0, 0, 0, 0, 0},
+	/*private static final int maze[][] = {	{0, 0, 0, 0, 0},
 											{0, 1, 0, 1, 0},
 											{0, 0, 0, 1, 0},
 											{0, 1, 0, 1, 0},
-											{0, 0, 0, 0, 0}};
+											{0, 0, 0, 0, 0}};*/
 	public static void main(String[] args) {
 		int sol[][] = new int[N][N];
 		boolean isVisited[][] = new boolean[N][N];
+		long stTime = System.currentTimeMillis();
 		new Question11().find(sol, isVisited, 0, 0, -1, -1);
+		long endTime = System.currentTimeMillis();
+		System.out.printf("Running time %d ms", (endTime - stTime));
 	}
 	private static int count;
 	private void find(int sol[][], boolean isVisited[][], int row, int col, int prevRow, int prevCol) {
 		isVisited[row][col] = true;
-		//System.out.printf("Checking current row %d col %d against prev row %d prev col %d\n", row, col, prevRow, prevCol);
 		if (row == N-1 && col == N-1) {
 			sol[N-1][N-1] = 1;
 			System.out.println("Solution " + ++count);
@@ -44,6 +46,9 @@ public class Question11 {
 				}
 				System.out.println();
 			}
+			sol[row][col] = 0;
+			isVisited[row][col] = false;
+			return;
 		}
 		
 		if (col != N-1 && (prevCol - 1) != col && maze[row][col+1] != 1 && !isVisited[row][col+1]) {
